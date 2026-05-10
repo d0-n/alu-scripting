@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/^h.n$/).join
+m = ARGV[0].match(/^h.n$/)
+puts m[0] if m

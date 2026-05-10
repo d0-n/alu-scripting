@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/^\d{10}$/).join
+m = ARGV[0].match(/^\d{10}$/)
+puts m[0] if m
