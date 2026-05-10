@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/School/).join
+
+result = ARGV[0].scan(/School/).join
+puts result
 
