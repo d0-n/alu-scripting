@@ -1,18 +1,20 @@
 #!/usr/bin/python3
-"""queries reddit"""
+"""" Top Ten Limit"""
 import requests
 
 
 def top_ten(subreddit):
-    """prints top ten hot posts"""
-    url = "https://www.reddit.com/r/{}/hot.json"
-    r = requests.get(
-        url.format(subreddit),
-        headers={"User-Agent": "anything"},
-        allow_redirects=False
-    )
-    if r.status_code == 200:
-        for post in r.json()["data"]["children"][:10]:
-            print(post["data"]["title"])
-    else:
+    """"top ten"""
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10" \
+        .format(subreddit)
+
+    res = requests.get(url,
+                       headers={
+                           'User-Agent': 'Mozilla/5.0'})
+
+    if res.status_code != 200:
         print(None)
+    else:
+        json_response = res.json()
+        posts = json_response.get('data').get('children')
+        [print(post.get('data').get('title')) for post in posts]
