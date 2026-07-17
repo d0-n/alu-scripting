@@ -26,7 +26,3 @@ python3 1-top_ten.py programming
 python3 2-recurse.py programming
 python3 3-count.py programming 'python java javascript'
 ```
-
-## Author
-
-ALU Student
