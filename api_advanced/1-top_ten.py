@@ -5,9 +5,12 @@ import requests
 
 def top_ten(subreddit):
     """prints titles of first 10 hot posts"""
-    r = requests.get("https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit),
-                      headers={"User-Agent": "anything"},
-                      allow_redirects=False)
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10"
+    r = requests.get(
+        url.format(subreddit),
+        headers={"User-Agent": "anything"},
+        allow_redirects=False
+    )
     if r.status_code != 200:
         print(None)
         return
