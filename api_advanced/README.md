@@ -18,7 +18,7 @@ Python scripts that query the Reddit API to practice working with APIs, paginati
 | `2-recurse.py` | Recursively returns a list of all hot article titles for a given subreddit |
 | `3-count.py` | Recursively counts and prints sorted keyword occurrences in hot article titles |
 
-## Usage
+## How to use
 
 ```bash
 python3 0-subs.py programming
