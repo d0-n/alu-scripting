@@ -6,7 +6,7 @@ import sys
 
 def top_ten(subreddit):
     """prints top ten hot posts"""
-    url = "https://www.reddit.com/r/{}/hot.json?limit=10"
+    url = "https://www.reddit.com/r/{}/hot.json"
     response = requests.get(
         url.format(subreddit),
         headers={"User-Agent": "anything"},
