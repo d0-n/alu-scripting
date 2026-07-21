@@ -6,13 +6,14 @@ import requests
 def top_ten(subreddit):
     """prints top ten hot posts"""
     url = "https://www.reddit.com/r/{}/hot.json"
-    r = requests.get(
-        url.format(subreddit),
-        headers={"User-Agent": "anything"},
-        allow_redirects=False
-    )
-    if r.status_code == 200:
-        for post in r.json()["data"]["children"][:10]:
-            print(post["data"]["title"])
-    else:
+    headers = {"User-Agent": "linux:alu_api:v1.0.0"}
+    r = requests.get(url.format(subreddit),
+                     headers=headers,
+                     allow_redirects=False)
+    if r.status_code != 200:
         print(None)
+        return
+    data = r.json().get("data", {})
+    children = data.get("children", [])
+    for i in range(min(10, len(children))):
+        print(children[i].get("data", {}).get("title"))
