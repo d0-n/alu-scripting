@@ -1,24 +1,23 @@
 #!/usr/bin/python3
 """queries reddit"""
-import sys
-
 import requests
+import sys
 
 
 def top_ten(subreddit):
     """prints top ten hot posts"""
-    url = "https://www.reddit.com/r/{}/hot.json"
-    headers = {"User-Agent": "linux:alu_api:v1.0.0"}
-    r = requests.get(url.format(subreddit),
-                     headers=headers,
-                     allow_redirects=False)
-    if r.status_code != 200:
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10"
+    response = requests.get(
+        url.format(subreddit),
+        headers={"User-Agent": "anything"},
+        allow_redirects=False
+    )
+    if response.status_code != 200:
         print(None)
         return
-    data = r.json().get("data", {})
-    children = data.get("children", [])
-    for i in range(min(10, len(children))):
-        print(children[i].get("data", {}).get("title"))
+    data = response.json().get("data", {})
+    for post in data.get("children", [])[:10]:
+        print(post.get("data", {}).get("title"))
 
 
 if __name__ == "__main__":
